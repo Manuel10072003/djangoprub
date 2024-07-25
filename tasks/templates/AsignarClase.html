@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/CSS/inter.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignar Clase</title>
+    <style>
+        body {
+            background-color: rgb(13, 14, 28);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .form-container {
+            background-color: rgb(39, 42, 84);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 50px auto;
+            width: 80%;
+            max-width: 500px;
+            color: white;
+        }
+        .form-container h3 {
+            text-align: center;
+        }
+        .form-container .textob {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-container input[type="text"],
+        .form-container input[type="date"],
+        .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #218838;
+        }
+        .form-container .hrcolor {
+            border: 1px solid #fff;
+            margin: 20px 0;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .button-container button,
+        .button-container .back-button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            box-sizing: border-box;
+            height: 45px;
+            margin: 0 5px;
+        }
+        .button-container button {
+            background-color: #28a745;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .button-container button:hover {
+            background-color: #218838;
+        }
+        .button-container .back-button {
+            background-color: rgb(250, 198, 87);
+            color: white;
+            text-decoration: none;
+        }
+        .button-container .back-button:hover {
+            background-color: rgb(235, 178, 61);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="form-container">    
+    <form action="{% url 'AsignarClase' %}" method="post">
+        {% csrf_token %}
+        <hr class="hrcolor">
+            <div class="textob">Asignar Clase</div>
+            <div class="textob">IdClase:</div>
+            <select id="IdClase" name="IdClase" required>
+                {% for clase in clases %}
+                    <option value="{{ clase.idclase }}">{{ clase.idclase }}</option>
+                {% endfor %}
+            </select>
+        
+            <div class="textob">Fecha:</div>
+            <input type="date" id="Fecha" name="Fecha" required>
+            <div class="textob">Hora:</div>
+            <select id="Hora" name="Hora" required>
+                <option value="03:00">03:00 - 03:45</option>
+                <option value="03:45">03:45 - 04:30</option>
+                <option value="04:30">04:30 - 05:15</option>
+                <option value="05:15">05:15 - 06:00</option>
+            </select>
+            <hr class="hrcolor">
+            <div class="button-container">
+                <button type="submit">Guardar</button>
+                <a href="{% url 'menuPrincipal' %}" class="back-button">Volver al Menú Principal</a>
+
+        </div>
+    </form>
+</body>
+</html>

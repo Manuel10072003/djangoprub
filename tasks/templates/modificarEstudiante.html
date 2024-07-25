@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Estudiante</title>
+    <style>
+        body {
+            background-color: rgb(13, 14, 28);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+        form {
+            background-color: rgb(39, 42, 84);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 50px auto;
+            width: 80%;
+            max-width: 500px;
+            position: relative;
+        }
+        .form-title {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="date"],
+        select,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            height: 45px;
+            width: calc(50% - 10px);
+        }
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .button-container input[type="submit"],
+        .button-container .back-button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            box-sizing: border-box;
+            height: 45px;
+            margin: 0 5px;
+        }
+        .button-container .back-button {
+            background-color: rgb(250, 198, 87);
+            color: white;
+            text-decoration: none;
+            width: calc(50% - 10px);
+        }
+        .button-container .back-button:hover {
+            background-color: rgb(235, 178, 61);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>{{ Estudiante.idestudiante }}</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="Nombres"></label>Nombres: <input type="text" value="{{Estudiante.nombres}}" name="Nombres" id="Nombres"><br>
+        <label>Apellidos: <input type="text" value="{{Estudiante.apellidos}}" name="Apellidos"></label><br>
+        <label>Fecha de nacimiento: <input type="date" value="{{Estudiante.fechanacimiento}}" name="FechaNacimiento"></label><br>
+        <label>DNI: <input type="text" value="{{Estudiante.dni}}" name="DNI" maxlength="8"></label><br>
+        <label for="Anio">Año escolar: <input type="text" value="{{Estudiante.anioescolar}}" name="Anio" id="Anio"></label><br>
+        <label>Foto del alumno: <input type="file" name="Foto" accept="image/*"></label><br>
+        <input type="submit">
+    </from>
+</body>
+</html>

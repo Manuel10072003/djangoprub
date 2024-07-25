@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/CSS/menu-docente.css' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Menú Principal</title>
+</head>
+<body>
+    <div class="container">
+        <div class="contUnitario">
+            <div>
+                <div class="foto-container">
+                    <img src="{% static 'assets/img/genericst.jpg' %} " width="250px">
+                </div>
+                <div class="text-container">
+                    <div> Nombre del docente: <b>{{ nombre_docente }}</b> </div>
+                    <div> Código Docente: <b>{{ codigo_docente }}</b> </div>
+                    <div> Registros:</div>
+                    <button onclick="location.href='{% url 'login' %}'">Cerrar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container2">
+        <div id="parent" class="container-curso-principal">
+            {% if act %}
+            <div class="container-cursitos">
+                <h1>Curso Actual</h1>
+
+                <form action="{% url 'RegMC' %}" method="POST">
+                    {% csrf_token %}
+                    <table class="estestudiantes">
+                        <div  class="contUnitario1">
+                            <div class="foto-container"><img src="{% static 'assets/img/genericst.jpg' %}" ></div>
+                            <hr class="hrcolor">
+                            <div style="color: white;">Curso: {{ act.0.Curso }}</div>
+                            <hr class="hrcolor">
+                            <div style="color: white;">Sección: {{ act.0.Seccion}}</div>
+                            <hr class="hrcolor">
+                            <div style="color: white;">Asistentes: {{ act.0.Asistentes}}/{{act.0.Total}}</div>
+                            <input name="idclase" id="idc" type="hidden" value="{{ act.0.IdClase }}">
+                            <button type="submit">Registrar alumnos</button>
+                        </div>
+                        <form action="{% url 'reg_notas' %}" method="POST" style="display: inline;">
+                                    {% csrf_token %}
+                                    <input name="idclase" id="idc" type="hidden" value="{{ act.0.IdClase }}">
+                                    <button type="submit">Ver Registro de Notas</button>
+                        </form>
+                    </table>
+                </form>
+            </div>
+            {% endif %}
+            <div class="container-cursos">
+                {% for i in cursos %}
+                <div class="container-cursitos">
+                        <table class="estestudiantes">
+                            <div style="text-align: center;" class="contUnitario1">
+                                <div><img src="{% static 'assets/img/genericst.jpg' %}" ></div>
+                                <hr class="hrcolor">
+                                <div >{{ i.idcurso.nombre }}</div>
+                                <hr class="hrcolor">
+                                <div >Sección: {{ i.idseccion.designacion }}</div>
+                                <hr class="hrcolor">
+                            </div>
+                        </table>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

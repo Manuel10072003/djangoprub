@@ -1,0 +1,91 @@
+body{
+    background-color: #0d0e1c;
+    color: white;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.container2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+
+h1{
+    text-align: center;
+}
+.contUnitario{
+
+    background-color: #272a54;
+    width: 500px;
+    border-end-end-radius: 20%;
+    padding: 2em;
+    margin: 2em;
+}
+
+.contUnitario1{
+    background-color: #272a54;
+    width: 500px;
+    border-end-end-radius: 20%;
+}
+
+
+.text-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.foto-container{
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5%;
+}
+
+button{
+	cursor: pointer;
+	border: none;
+	background-color: #fac657;
+	border-radius: 10px;
+	padding: 12px 20px;
+	margin: 8px 0;
+}
+button:hover{
+	background-color: #bf9845;
+}
+
+img{
+    width: 30%;
+    border-radius: 50%;
+    align-self: center;
+}
+
+.container-curso-principal{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100vw;    
+}
+
+.container-cursitos{
+    background-color: #272a54;
+    border-end-end-radius: 20%;
+    padding: 2em;
+    margin: 5em;
+
+}
+
+.container-cursos{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+}

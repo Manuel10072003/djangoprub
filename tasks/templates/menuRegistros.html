@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu de Registros</title>
+    <style>
+    body {
+        background-color: rgb(13, 14, 28);
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    .container {
+        background-color: rgb(39, 42, 84);
+        border-radius: 10px;
+        padding: 30px;
+        width: 90%;
+        max-width: 600px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        color: white;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .button-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    .button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+    .button:hover {
+        background-color: #45a049;
+        transform: translateY(-2px);
+    }
+    .button:active {
+        transform: translateY(1px);
+    }
+    </style>    
+</head>
+<body>
+    <div class="container">
+        <h1>Menu de Registros</h1>
+        <div class="button-grid">
+            <button onclick="location.href='{% url 'CrearEs' %}'" class="button">Registrar Estudiante</button>
+            <button onclick="location.href='{% url 'crear_docente' %}'" class="button">Registrar Docente</button>
+            <button onclick="location.href='{% url 'CrearCurso' %}'" class="button">Registrar Curso</button>
+            <button onclick="location.href='{% url 'CrearAp' %}'" class="button">Registrar Apoderado</button>
+            <button onclick="location.href='{% url 'asignar_clase' %}'" class="button">Asignar Clase</button>
+            <button onclick="location.href='{% url 'AsigDo' %}'" class="button">Asignar Docente</button>
+            <button onclick="location.href='{% url 'LeerEs' %}'" class="button">Ver estudiante</button>
+        </div>
+    </div>
+</body>
+</html>
